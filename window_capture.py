@@ -69,15 +69,3 @@ class Window_Capture:
         img = numpy.ascontiguousarray(img)
 
         return img
-
-    # getting a list of all the windows
-    @staticmethod
-    def list_window_names():
-        def winEnumHandler(hwnd, ctx):
-            if win32gui.IsWindowVisible(hwnd):
-                print(hex(hwnd), win32gui.GetWindowText(hwnd))
-
-        win32gui.EnumWindows(winEnumHandler, None)
-
-    def get_screen_position(self, pos):
-        return pos[0] + self.offset_x, pos[1] + self.offset_y
